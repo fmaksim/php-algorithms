@@ -5,19 +5,17 @@ function selectionSort(array $array): array
     $length = count($array);
 
     for ($i = 0; $i < $length; ++$i) {
-        $minElement = $array[$i];
         $minElementIndex = $i;
 
         for ($j = $i + 1; $j < $length; ++$j) {
-            if ($array[$j] < $minElement) {
-                $minElement = $array[$j];
+            if ($array[$j] < $array[$minElementIndex]) {
                 $minElementIndex = $j;
             }
         }
 
-        $tmp = $array[$i];
-        $array[$i] = $array[$minElementIndex];
-        $array[$minElementIndex] = $tmp;
+        if ($i !== $minElementIndex) {
+            list($array[$i], $array[$minElementIndex]) = [$array[$minElementIndex], $array[$i]];
+        }
 
     }
 
