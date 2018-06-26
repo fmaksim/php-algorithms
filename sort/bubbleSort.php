@@ -4,13 +4,17 @@ function bubbleSort(array $array): array
 {
 
     $length = count($array);
-    for ($i = 1; $i < $length; ++$i) {
+    for ($i = 0; $i < $length; ++$i) {
+        $swapped = false;
         for ($j = 0; $j < $length - 1; ++$j) {
-            if ($array[$i] < $array[$j]) {
-                $tmp = $array[$j];
-                $array[$j] = $array[$i];
-                $array[$i] = $tmp;
+            if ($array[$j] > $array[$j + 1]) {
+                list($array[$j], $array[$j + 1]) = [$array[$j + 1], $array[$j]];
+                $swapped = true;
             }
+        }
+
+        if ($swapped === false) {
+            break;
         }
     }
 
