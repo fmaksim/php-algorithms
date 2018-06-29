@@ -19,7 +19,7 @@ function binarySearch(array $array, $value): bool
         return true;
     }
 
-    if ($array[$middle] >= $value) {
+    if ($array[$middle] > $value) {
         return binarySearch(array_slice($array, 0, $middle), $value);
     } else {
         return binarySearch(array_slice($array, $middle), $value);
